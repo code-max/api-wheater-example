@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const methodOverride = require("method-override");
 const mongoose = require("mongoose");
 const app = express();
+require("dotenv").config();
 
 // Middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
