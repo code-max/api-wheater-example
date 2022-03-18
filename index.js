@@ -22,3 +22,20 @@ app.use(router);
 app.listen(3000, function () {
   console.log("Node server running on http://localhost:3000");
 });
+
+// Connection to MongoDB localhost
+// mongoose.connect(process.env.MONGO_DB, function (err, res) {
+//   if (err) throw err;
+//   console.log("Connected to Database");
+// });
+
+// Connection to MongoDB Atlas cluster
+try {
+  mongoose.connect(
+    process.env.MONGO_DB,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    () => console.log(" Mongoose is connected")
+  );
+} catch (e) {
+  console.log("could not connect");
+}
