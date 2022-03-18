@@ -9,5 +9,8 @@
     "express": "^4.17.3",
     "method-override": "^3.0.0",
     "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
