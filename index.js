@@ -8,3 +8,11 @@ const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
+
+// Example Route
+let router = express.Router();
+router.get("/", function (req, res) {
+  res.send("API Example Route");
+});
+
+app.use(router);
