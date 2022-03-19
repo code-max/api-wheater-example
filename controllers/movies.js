@@ -10,3 +10,13 @@ exports.findAllMovies = function (req, res) {
     res.status(200).jsonp(movies);
   });
 };
+
+//GET - Return a Movie with specified ID
+exports.findById = function (req, res) {
+  Movies.findById(req.params.id, function (err, movies) {
+    if (err) return res.send(500, err.message);
+
+    console.log("GET /movies/" + req.params.id);
+    res.status(200).jsonp(movies);
+  });
+};
