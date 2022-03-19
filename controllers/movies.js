@@ -40,3 +40,20 @@ exports.addMovie = function (req, res) {
     res.status(200).jsonp(movie);
   });
 };
+
+//PUT - Update a register movie already exists
+exports.updateMovie = function (req, res) {
+  Movies.findById(req.params.id, function (err, movie) {
+    movie.title = req.body.title;
+    movie.year = req.body.year;
+    movie.country = req.body.country;
+    movie.poster = req.body.poster;
+    movie.genre = req.body.genre;
+    movie.summary = req.body.summary;
+
+    movie.save(function (err) {
+      if (err) return res.send(500, err.message);
+      res.status(200).jsonp(movie);
+    });
+  });
+};
