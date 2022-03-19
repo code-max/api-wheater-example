@@ -39,3 +39,7 @@ try {
 } catch (e) {
   console.log("could not connect");
 }
+
+// Import Models and controllers
+let models = require("./models/movies")(app, mongoose);
+let MovieCtrl = require("./controllers/movies");
