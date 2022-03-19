@@ -57,3 +57,12 @@ exports.updateMovie = function (req, res) {
     });
   });
 };
+
+//DELETE - Delete a Movie with specified ID
+exports.deleteMovie = function (req, res) {
+  Movies.findOneAndRemove(req.params.id, function (err) {
+    if (err) return res.send(500, err.message);
+    res.json({ message: "Movie have been removed!" });
+    console.log("Movie have been removed!");
+  });
+};
