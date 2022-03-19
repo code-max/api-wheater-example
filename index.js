@@ -43,3 +43,16 @@ try {
 // Import Models and controllers
 let models = require("./models/movies")(app, mongoose);
 let MovieCtrl = require("./controllers/movies");
+
+// API routes
+var movies = express.Router();
+
+movies.route("/movies").get(MovieCtrl.findAllMovies).post(MovieCtrl.addMovie);
+
+movies
+  .route("/movies/:id")
+  .get(MovieCtrl.findById)
+  .put(MovieCtrl.updateMovie)
+  .delete(MovieCtrl.deleteMovie);
+
+app.use("/api", movies);
