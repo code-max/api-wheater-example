@@ -20,3 +20,23 @@ exports.findById = function (req, res) {
     res.status(200).jsonp(movies);
   });
 };
+
+//POST - Insert a new Movie in the DB
+exports.addMovie = function (req, res) {
+  console.log("POST");
+  console.log(req.body);
+
+  let movie = new Movies({
+    title: req.body.title,
+    year: req.body.year,
+    country: req.body.country,
+    poster: req.body.poster,
+    genre: req.body.genre,
+    summary: req.body.summary,
+  });
+
+  movie.save(function (err, movie) {
+    if (err) return res.send(500, err.message);
+    res.status(200).jsonp(movie);
+  });
+};
